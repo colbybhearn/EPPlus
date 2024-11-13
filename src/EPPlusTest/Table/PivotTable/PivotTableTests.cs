@@ -1168,5 +1168,29 @@ namespace EPPlusTest.Table.PivotTable
             }
             SwitchBackToCurrentCulture();
         }
+
+        [TestMethod]
+        public void FillDownTest()
+        {
+            using var p = new ExcelPackage();
+            var ws = p.Workbook.Worksheets.Add("Sheet 1");
+
+            var range = LoadItemData(ws);
+            var pt = ws.PivotTables.Add(ws.Cells["B2"], range, "FillDownTable");
+            pt.RowFields.Add(pt.Fields[1]);
+            pt.RowFields.Add(pt.Fields[0]);
+            pt.DataFields.Add(pt.Fields[3]);
+            foreach (var field in pt.Fields)
+            {
+                field.ShowAll = false;
+                field.SubtotalTop = true;
+                field.ShowMemberPropertyToolTip = false;
+                field.RepeatItemLabels = true;
+                field.Compact = false;
+                field.Outline = true;
+                field.InsertBlankRow = true;
+            }
+            //p.SaveAs(@"C:\epplustest\testoutput\pivot_filldown.xlsx");
+        }
     }
 }
