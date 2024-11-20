@@ -393,7 +393,7 @@ namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
         }
         internal void SetTokens(string worksheet)
         {
-            if (RpnTokens == null)
+            if (Tokens == null)
             {
                 Tokens = _tokenizer.Tokenize(Formula, worksheet);
             }
