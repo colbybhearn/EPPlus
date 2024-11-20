@@ -240,6 +240,10 @@ namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
         internal RpnFormula GetRpnFormula(RpnOptimizedDependencyChain depChain, int row, int col)
         {
             depChain._parsingContext.CurrentCell = new FormulaCellAddress(_ws.IndexInList, row, col);
+            if(RpnTokens==null)
+            {
+                SetFormula(_ws, Formula);
+            }
             if (_compiledExpressions == null)
             {
                 _compiledExpressions = FormulaExecutor.CompileExpressions(ref RpnTokens, depChain._parsingContext);
@@ -389,7 +393,7 @@ namespace OfficeOpenXml.FormulaParsing.LexicalAnalysis
         }
         internal void SetTokens(string worksheet)
         {
-            if (Tokens == null)
+            if (RpnTokens == null)
             {
                 Tokens = _tokenizer.Tokenize(Formula, worksheet);
             }
