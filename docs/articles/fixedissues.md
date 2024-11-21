@@ -1,6 +1,14 @@
 # Features / Fixed issues - EPPlus 7
 ## Version 7.5.1
-* Fix for inserting rows after array formulas when reffering to worksheets with '#' as part of the worksheet name.
+* Style set on column/row level did not save on cells with a value and styleId is 0.
+* Fix for inserting rows after array formulas when referring to worksheets with '#' as part of the worksheet name.
+* Pivottable Field.Names on a field with rich text now returns the text content instead of OfficeOpenXml.Style.ExcelRichTextCollection
+* Fixed .ToDataTable not reading rich text correctly in rare cases.
+* ExcelPicture.Image.SetImage(" can now correctly be set to a .svg even if the original ExcelPicture was not created with a .svg file. And vice versa for other file formats.
+* Fixed reference mismatches in some cases after removing and adding a picture multiple times. When referring to the same picture with multiple ExcelPicture's.
+* Files created in the /media zipped subfolder now have the correct name index for a given workbook. Even if other workbooks in the same session reference the same image/images.
+* Shared formulas failed to calculate if a worksheet was copied.
+* Formulas referencing a deleted worksheet was not calculated correctly.
 
 ## Version 7.5.0
 ### Fixed issues and minor features
