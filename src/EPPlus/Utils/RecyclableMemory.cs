@@ -80,10 +80,7 @@ namespace OfficeOpenXml.Utils
                 {						
 					if (_memoryManager == null)
                     {
-						_memoryManager = new RecyclableMemoryStreamManager(
-							new RecyclableMemoryStreamManager.Options(
-								)
-						);
+						_memoryManager = new RecyclableMemoryStreamManager();
                     }
                 }
                 return _memoryManager;
