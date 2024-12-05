@@ -32,7 +32,7 @@ namespace EPPlusTest.Table.PivotTable.Calculation
         [TestMethod]
         public void VerifyDuplicateNumberAndString()
 		{
-            using (var p = OpenPackage("PivotDupTest.xlsx"))
+            using (var p = OpenPackage("PivotDupTest.xlsx", true))
 			{
 				var ws = p.Workbook.Worksheets.Add("Sheet1");
 				ws.Cells["A1"].Value = "Col";
